@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fetch API Example</title>
+</head>
+<body>
+  <h1>Fetch API Example</h1>
+  <button id="sendButton">Send Data</button>
+
+  <script>
+    document.getElementById("sendButton").addEventListener("click", sendData);
+
+    function sendData() {
+      const apiUrl = "https://api.jsonbin.io/v3/b/64cb7bff8e4aa6225ec9e2a7";
+      const apiKey = "$2b$10$GBNoWSXzobsysTLzwqrXSePLHUP/.wqkrhtQ813ArCHq5DR.3z4y6";
+
+      const data = { sample: "Hello World zlkjort" };
+
+      fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Master-Key": apiKey,
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log("Response:", data))
+        .catch((error) => console.error("Error:", error));
+    }
+  </script>
+</body>
+</html>
